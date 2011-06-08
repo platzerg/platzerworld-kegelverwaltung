@@ -15,7 +15,7 @@ hr {
 table th {
 	background:#EFEFEF none repeat scroll 0 0;
 	border-top:1px solid #CCCCCC;
-	font-size:small;
+	font-size:large;
 	padding-left:5px;
 	padding-right:4px;
 	padding-top:4px;
@@ -25,7 +25,7 @@ table th {
 
 table tr {	
 	background-color: #e5ecf9;
-	font-size:small;
+	font-size:large;
 }
 
 
@@ -46,16 +46,16 @@ table tr {
 
 
 .done {
-	font-size: x-small;
+	font-size: large;
 	vertical-align: top;
 }
 
 
 .email {
-	font-size: x-small;
+	font-size: large;
 	vertical-align: top;
 }
 
 form td {
-	font-size: smaller;
+	font-size: large;
 }

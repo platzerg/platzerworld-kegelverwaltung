@@ -33,7 +33,7 @@ if (user != null){
 	<div style="width: 100%;">
 		<div class="line"></div>
 		<div class="topLine">
-			<div style="float: left;" class="headline">Kegelverwaltung</div>
+			<div style="float: center;" class="headline">Kegelverwaltung</div>
 			<div style="float: right;"><a href="<%=url%>"><%=urlLinktext%></a> <%=(user==null? "" : user.getNickname())%></div>
 		</div>
 	</div>
@@ -46,19 +46,21 @@ if (user != null){
 <% if (user != null){ %> 
 
 <form  method="post" accept-charset="utf-8">
+
+<div style="width: 100%;">
 	<table>
-		<tr>
-			<td ><a href="/Ligaverwaltung?typ=0" >Verwaltung von Klassen</a></td>
+		<tr align="center" valign="middle">
+			<td width="500"><a href="/Ligaverwaltung?typ=0" >Verwaltung von Klassen</a></td>
 		</tr>
-		<tr>
-			<td><a href="/Ligaverwaltung?typ=1" >Verwaltung von Mannschaften</a></td>
+		<tr align="center" valign="middle">
+			<td width="500"><a href="/Ligaverwaltung?typ=1" >Verwaltung von Mannschaften</a></td>
 		</tr>
-		<tr>
-			<td><a href="/Ligaverwaltung?typ=2" >Verwaltung von Spielern</a></td>
-		</tr>
-		
+		<tr align="center" valign="middle">
+			<td width="500"><a href="/Ligaverwaltung?typ=2" >Verwaltung von Spielern</a></td>
+		</tr>		
 	</table>
-	
+</div>
+
 </form>
 
 <% }else{ %>
