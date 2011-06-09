@@ -1,2 +1,0 @@
-serviceClass: com.platzerworld.kegelverwaltung.client.GreetingService
-path: 9F31162505CE459BCA5822DDD3413A9B.gwt.rpc
