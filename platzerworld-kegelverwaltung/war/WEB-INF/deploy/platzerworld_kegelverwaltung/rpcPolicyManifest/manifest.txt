@@ -1,0 +1,3 @@
+# Module platzerworld_kegelverwaltung
+# RPC service class, partial path of RPC policy file
+com.platzerworld.kegelverwaltung.client.GreetingService, 9F31162505CE459BCA5822DDD3413A9B.gwt.rpc
