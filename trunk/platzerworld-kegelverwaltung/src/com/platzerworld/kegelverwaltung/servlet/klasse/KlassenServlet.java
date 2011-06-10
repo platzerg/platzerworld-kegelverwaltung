@@ -112,10 +112,10 @@ public class KlassenServlet extends HttpServlet {
 				
 				 Type type = new TypeToken<List<Klasse>>(){}.getType();
 				 
-				 List<Klasse> studentList = gson.fromJson(data, type);
+				 List<KlasseTO> studentList = gson.fromJson(data, type);
 
-			        for (Klasse klasse : studentList) {
-			            System.out.println("student.getName() = " + klasse.getName());
+			        for (KlasseTO klasse : studentList) {
+			            System.out.println("student.getName() = " + klasse.name);
 			        }
 				 
 				out.println(data);		           
