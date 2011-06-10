@@ -42,7 +42,7 @@ public class MannschaftServlet extends HttpServlet {
 			
 			if(0== typ){
 				String mannschaft = checkNull(req.getParameter("mannschaft"));
-				MannschaftDAO.INSTANCE.add(mannschaft);
+				MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			}else if(1 == typ){
 				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getKlassen(null);
 				
@@ -97,7 +97,7 @@ public class MannschaftServlet extends HttpServlet {
 			
 			if(0== typ){
 				String mannschaft = checkNull(req.getParameter("mannschaft"));
-				MannschaftDAO.INSTANCE.add(mannschaft);
+				MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			}else if(1 == typ){
 				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getKlassen(null);
 				

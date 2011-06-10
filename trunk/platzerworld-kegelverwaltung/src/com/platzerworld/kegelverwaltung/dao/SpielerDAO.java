@@ -21,10 +21,10 @@ public enum SpielerDAO {
 		return spieler;
 	}
 
-	public void add(String name) {
+	public void add(String userId, String name) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Spieler spieler = new Spieler(name, new Date());
+			Spieler spieler = new Spieler(userId, name, new Date());
 			em.persist(spieler);
 			em.close();
 		}

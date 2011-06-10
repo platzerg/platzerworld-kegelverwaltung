@@ -13,10 +13,12 @@ public class Spieler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String userId;
 	private String name;
 	private Date lastChangedDate;
 	
-	public Spieler(String name, Date lastChangedDate){
+	public Spieler(String userId, String name, Date lastChangedDate){
+		this.userId = userId;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
 	}
@@ -41,6 +43,8 @@ public class Spieler {
 		return id;
 	}
 	
-	
+	public String getUserId() {
+		return userId;
+	}
 
 }

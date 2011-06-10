@@ -13,10 +13,12 @@ public class Klasse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String userId;
 	private String name;
 	private Date lastChangedDate;
 	
-	public Klasse(String name, Date lastChangedDate){
+	public Klasse(String userId, String name, Date lastChangedDate){
+		this.userId = userId;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
 	}
@@ -40,7 +42,8 @@ public class Klasse {
 	public Long getId() {
 		return id;
 	}
-	
-	
 
+	public String getUserId() {
+		return userId;
+	}
 }

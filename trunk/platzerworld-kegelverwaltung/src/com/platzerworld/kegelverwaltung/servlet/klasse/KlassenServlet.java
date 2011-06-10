@@ -41,7 +41,7 @@ public class KlassenServlet extends HttpServlet {
 			
 			if(0== typ){
 				String klasse = checkNull(req.getParameter("klasse"));
-				KlasseDAO.INSTANCE.add(klasse);
+				KlasseDAO.INSTANCE.add(user.getUserId(), klasse);
 			}else if(1 == typ){
 				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(null);
 				
@@ -96,7 +96,7 @@ public class KlassenServlet extends HttpServlet {
 			
 			if(0== typ){
 				String klasse = checkNull(req.getParameter("klasse"));
-				KlasseDAO.INSTANCE.add(klasse);
+				KlasseDAO.INSTANCE.add(user.getUserId(), klasse);
 			}else if(1 == typ){
 				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(null);
 				
