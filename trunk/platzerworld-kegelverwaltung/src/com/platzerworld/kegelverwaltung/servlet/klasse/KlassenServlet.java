@@ -15,10 +15,8 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.platzerworld.kegelverwaltung.dao.KlasseDAO;
-import com.platzerworld.kegelverwaltung.dao.SpielerDAO;
 import com.platzerworld.kegelverwaltung.model.Klasse;
 import com.platzerworld.kegelverwaltung.vo.KlasseTO;
 
@@ -44,7 +42,6 @@ public class KlassenServlet extends HttpServlet {
 			if(0== typ){
 				String klasse = checkNull(req.getParameter("klasse"));
 				KlasseDAO.INSTANCE.add(klasse);
-				resp.sendRedirect("/Klassenverwaltung.jsp");
 			}else if(1 == typ){
 				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(null);
 				
@@ -66,16 +63,13 @@ public class KlassenServlet extends HttpServlet {
 			            System.out.println("student.getName() = " + klasse.getName());
 			        }
 				 
-				out.println(data);
-		           
+				out.println(data);		           
 				
 			}else if(2 == typ){
-				String spieler = checkNull(req.getParameter("spieler"));
-				SpielerDAO.INSTANCE.add(spieler);
-				resp.sendRedirect("/Spielerverwaltung.jsp");
-			}else{
-				resp.sendRedirect("/Ligaverwaltung.jsp");
+				int klasseId = Integer.parseInt(checkNull(req.getParameter("klasseid")));
+				KlasseDAO.INSTANCE.remove(klasseId);
 			}
+			
 		} catch (Exception e) {
             String errMsg = stackToString(e);
             resp.setContentType("application/json");
@@ -85,6 +79,7 @@ public class KlassenServlet extends HttpServlet {
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws IOException {
+		System.out.println("Creating new Klasse ");
 		String data="";
 		resp.setContentType("application/json");
 		PrintWriter out = resp.getWriter();
@@ -96,21 +91,39 @@ public class KlassenServlet extends HttpServlet {
 				user = userService.getCurrentUser();
 			}
 			
-			List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(null);
+			String typString = (String) req.getParameter("typ");
+			int typ = Integer.parseInt(typString);
 			
-			Gson gson = new Gson();
-			data = gson.toJson(klassen);
-			System.out.println("jsonStudents = " + data);
-			
-			 Type type = new TypeToken<List<Klasse>>(){}.getType();
-			 
-			 List<Klasse> studentList = gson.fromJson(data, type);
+			if(0== typ){
+				String klasse = checkNull(req.getParameter("klasse"));
+				KlasseDAO.INSTANCE.add(klasse);
+			}else if(1 == typ){
+				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(null);
+				
+				List<KlasseTO> klassenTOs = new ArrayList<KlasseTO>();
+				for (Klasse klasse : klassen) {
+					KlasseTO klassTO = new KlasseTO(klasse.getId(), klasse.getName());
+					klassenTOs.add(klassTO);
+				}
+				
+				Gson gson = new Gson();
+				data = gson.toJson(klassenTOs);
+				System.out.println("jsonStudents = " + data);
+				
+				 Type type = new TypeToken<List<Klasse>>(){}.getType();
+				 
+				 List<Klasse> studentList = gson.fromJson(data, type);
 
-		        for (Klasse klasse : studentList) {
-		            System.out.println("student.getName() = " + klasse.getName());
-		        }
-			 
-			out.println(data);
+			        for (Klasse klasse : studentList) {
+			            System.out.println("student.getName() = " + klasse.getName());
+			        }
+				 
+				out.println(data);		           
+				
+			}else if(2 == typ){
+				int klasseId = Integer.parseInt(checkNull(req.getParameter("klasseid")));
+				KlasseDAO.INSTANCE.remove(klasseId);
+			}
 			
 		} catch (Exception e) {
             String errMsg = stackToString(e);
