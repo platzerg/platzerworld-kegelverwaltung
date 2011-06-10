@@ -21,10 +21,10 @@ public enum MannschaftDAO {
 		return mannschaften;
 	}
 
-	public void add(String name) {
+	public void add(String userId, String name) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Mannschaft mannschaft = new Mannschaft(name, new Date());
+			Mannschaft mannschaft = new Mannschaft(userId, name, new Date());
 			em.persist(mannschaft);
 			em.close();
 		}

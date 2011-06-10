@@ -29,15 +29,15 @@ public class ServletCreate extends HttpServlet {
 		
 		if(0== typ){
 			String klasse = checkNull(req.getParameter("klasse"));
-			KlasseDAO.INSTANCE.add(klasse);
+			KlasseDAO.INSTANCE.add(user.getUserId(), klasse);
 			resp.sendRedirect("/Klassenverwaltung.jsp");
 		}else if(1 == typ){
 			String mannschaft = checkNull(req.getParameter("mannschaft"));
-			MannschaftDAO.INSTANCE.add(mannschaft);
+			MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			resp.sendRedirect("/Mannschaftverwaltung.jsp");
 		}else if(2 == typ){
 			String spieler = checkNull(req.getParameter("spieler"));
-			SpielerDAO.INSTANCE.add(spieler);
+			SpielerDAO.INSTANCE.add(user.getUserId(), spieler);
 			resp.sendRedirect("/Spielerverwaltung.jsp");
 		}else{
 			resp.sendRedirect("/Ligaverwaltung.jsp");
