@@ -47,7 +47,7 @@ public class VereinServlet extends HttpServlet {
 				
 				List<VereinTO> klassenTOs = new ArrayList<VereinTO>();
 				for (Verein klasse : klassen) {
-					VereinTO klassTO = new VereinTO(klasse.getId(), klasse.getName());
+					VereinTO klassTO = new VereinTO(klasse.getId(), klasse.getName(), 1, 5);
 					klassenTOs.add(klassTO);
 				}
 				
@@ -102,7 +102,7 @@ public class VereinServlet extends HttpServlet {
 				
 				List<VereinTO> klassenTOs = new ArrayList<VereinTO>();
 				for (Verein klasse : klassen) {
-					VereinTO klassTO = new VereinTO(klasse.getId(), klasse.getName());
+					VereinTO klassTO = new VereinTO(klasse.getId(), klasse.getName(), 1, 5);
 					klassenTOs.add(klassTO);
 				}
 				
