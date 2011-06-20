@@ -43,7 +43,7 @@ public class VereinServlet extends HttpServlet {
 				String klasse = checkNull(req.getParameter("verein"));
 				VereinDAO.INSTANCE.add(user.getUserId(), klasse);
 			}else if(1 == typ){
-				List<Verein> klassen = VereinDAO.INSTANCE.getVereine(null);
+				List<Verein> klassen = VereinDAO.INSTANCE.getVereine(user.getUserId());
 				
 				List<VereinTO> klassenTOs = new ArrayList<VereinTO>();
 				for (Verein klasse : klassen) {
@@ -98,7 +98,7 @@ public class VereinServlet extends HttpServlet {
 				String klasse = checkNull(req.getParameter("verein"));
 				VereinDAO.INSTANCE.add(user.getUserId(), klasse);
 			}else if(1 == typ){
-				List<Verein> klassen = VereinDAO.INSTANCE.getVereine(null);
+				List<Verein> klassen = VereinDAO.INSTANCE.getVereine(user.getUserId());
 				
 				List<VereinTO> klassenTOs = new ArrayList<VereinTO>();
 				for (Verein klasse : klassen) {

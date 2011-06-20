@@ -31,7 +31,7 @@ public enum MannschaftDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Mannschaft> getKlassen(String userId) {
+	public List<Mannschaft> getMannschaften(String userId) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em.createQuery("select t from Mannschaft t where t.userId = :userId");
 		q.setParameter("userId", userId);

@@ -44,7 +44,7 @@ public class MannschaftServlet extends HttpServlet {
 				String mannschaft = checkNull(req.getParameter("mannschaft"));
 				MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			}else if(1 == typ){
-				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getKlassen(null);
+				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getMannschaften(user.getUserId());
 				
 				List<MannschaftTO> klassenTOs = new ArrayList<MannschaftTO>();
 				for (Mannschaft klasse : klassen) {
@@ -99,7 +99,7 @@ public class MannschaftServlet extends HttpServlet {
 				String mannschaft = checkNull(req.getParameter("mannschaft"));
 				MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			}else if(1 == typ){
-				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getKlassen(null);
+				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getMannschaften(user.getUserId());
 				
 				List<MannschaftTO> klassenTOs = new ArrayList<MannschaftTO>();
 				for (Mannschaft klasse : klassen) {
