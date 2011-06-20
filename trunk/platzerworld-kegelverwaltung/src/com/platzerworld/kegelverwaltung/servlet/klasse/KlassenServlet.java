@@ -5,8 +5,11 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +19,10 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.platzerworld.kegelverwaltung.common.persistence.EMFService;
 import com.platzerworld.kegelverwaltung.dao.KlasseDAO;
 import com.platzerworld.kegelverwaltung.model.Klasse;
+import com.platzerworld.kegelverwaltung.model.Mannschaft;
 import com.platzerworld.kegelverwaltung.vo.KlasseTO;
 
 @SuppressWarnings("serial")
@@ -76,6 +81,44 @@ public class KlassenServlet extends HttpServlet {
             out.println("\n");
             out.println(" " + errMsg + "");
         }
+	}
+	
+	public void setUp() throws Exception {
+		
+		EntityManager em = EMFService.get().createEntityManager();
+		
+		// Begin a new local transaction so that we can persist a new entity
+		em.getTransaction().begin();
+
+		// Read the existing entries
+		Query q = em.createQuery("select m from Klasse m");
+		// Persons should be empty
+
+		// Do we have entries?
+		boolean createNewEntries = (q.getResultList().size() == 0);
+
+		// No, so lets create new entries
+		if (createNewEntries) {
+			Klasse klasse = new Klasse("", "", new Date());
+			em.persist(klasse);
+			for (int i = 0; i < 40; i++) {
+				Mannschaft mannschaft = new Mannschaft("", "", new Date());
+				em.persist(mannschaft);
+				// Now persists the family person relationship
+				klasse.getMannschaften().add(mannschaft);
+				em.persist(mannschaft);
+				em.persist(klasse);
+			}
+		}
+
+		// Commit the transaction, which will cause the entity to
+		// be stored in the database
+		em.getTransaction().commit();
+
+		// It is always good practice to close the EntityManager so that
+		// resources are conserved.
+		em.close();
+
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws IOException {
