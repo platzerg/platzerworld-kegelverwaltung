@@ -1,11 +1,14 @@
 package com.platzerworld.kegelverwaltung.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Klasse {
@@ -16,6 +19,9 @@ public class Klasse {
 	private String userId;
 	private String name;
 	private Date lastChangedDate;
+	
+	@OneToMany(mappedBy = "klasse")
+	private final List<Mannschaft> mannschaften = new ArrayList<Mannschaft>();
 	
 	public Klasse(String userId, String name, Date lastChangedDate){
 		this.userId = userId;
@@ -46,4 +52,10 @@ public class Klasse {
 	public String getUserId() {
 		return userId;
 	}
+
+	public List<Mannschaft> getMannschaften() {
+		return mannschaften;
+	}
+	
+	
 }
