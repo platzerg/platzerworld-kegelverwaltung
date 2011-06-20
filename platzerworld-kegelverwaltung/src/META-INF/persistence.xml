@@ -6,10 +6,6 @@
 
     <persistence-unit name="transactions-optional">
         <provider>org.datanucleus.store.appengine.jpa.DatastorePersistenceProvider</provider>
-        
-        <class>com.platzerworld.kegelverwaltung.model.Klasse</class>
-        <class>com.platzerworld.kegelverwaltung.model.Mannschaft</class>
-        <class>com.platzerworld.kegelverwaltung.model.Spieler</class>
 		
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

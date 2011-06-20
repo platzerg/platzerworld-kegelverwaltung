@@ -19,9 +19,7 @@ public class Mannschaft {
 	private Long id;
 	private String userId;
 	private String name;
-	private Date lastChangedDate;	
-	private Klasse klasse;
-	private List<Spieler> spielerList = new ArrayList<Spieler>();
+	private Date lastChangedDate;
 	
 	public Mannschaft(String userId, String name, Date lastChangedDate){
 		this.userId = userId;
@@ -48,31 +46,13 @@ public class Mannschaft {
 	public Long getId() {
 		return id;
 	}
-		
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public String getUserId() {
 		return userId;
 	}
-
-	@ManyToOne
-	public Klasse getKlasse() {
-		return klasse;
-	}
-
-	public void setKlasse(Klasse klasse) {
-		this.klasse = klasse;
-	}
 	
-	@OneToMany
-	public List<Spieler> getJobList() {
-		return this.spielerList;
-	}
-
-	public void setJobList(List<Spieler> nickName) {
-		this.spielerList = nickName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

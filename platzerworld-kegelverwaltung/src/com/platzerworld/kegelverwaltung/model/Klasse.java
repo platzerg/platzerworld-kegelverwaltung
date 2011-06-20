@@ -20,8 +20,6 @@ public class Klasse {
 	private String name;
 	private Date lastChangedDate;
 	
-	@OneToMany(mappedBy = "klasse")
-	private final List<Mannschaft> mannschaften = new ArrayList<Mannschaft>();
 	
 	public Klasse(String userId, String name, Date lastChangedDate){
 		this.userId = userId;
@@ -52,9 +50,10 @@ public class Klasse {
 	public String getUserId() {
 		return userId;
 	}
+	
 
-	public List<Mannschaft> getMannschaften() {
-		return mannschaften;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	
