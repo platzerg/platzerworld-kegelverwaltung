@@ -33,8 +33,8 @@ public enum KlasseDAO {
 	@SuppressWarnings("unchecked")
 	public List<Klasse> getKlassen(String userId) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select t from Klasse t");
-		//q.setParameter("userId", "Platzer");
+		Query q = em.createQuery("select t from Klasse t where t.userId = :userId");
+		q.setParameter("userId", userId);
 		List<Klasse> klassen = q.getResultList();
 		return klassen;
 	}
