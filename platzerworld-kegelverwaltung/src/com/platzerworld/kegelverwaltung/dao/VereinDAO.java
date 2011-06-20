@@ -33,8 +33,8 @@ public enum VereinDAO {
 	@SuppressWarnings("unchecked")
 	public List<Verein> getVereine(String userId) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select t from Verein t");
-		//q.setParameter("userId", "Platzer");
+		Query q = em.createQuery("select t from Verein t where t.userId = :userId");
+		q.setParameter("userId", userId);
 		List<Verein> klassen = q.getResultList();
 		return klassen;
 	}

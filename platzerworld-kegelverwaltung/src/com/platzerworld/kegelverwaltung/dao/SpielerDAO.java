@@ -33,8 +33,8 @@ public enum SpielerDAO {
 	@SuppressWarnings("unchecked")
 	public List<Spieler> getKlassen(String userId) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select t from Spieler t");
-		//q.setParameter("userId", "Platzer");
+		Query q = em.createQuery("select t from Spieler t where t.userId = :userId");
+		q.setParameter("userId", userId);
 		List<Spieler> spieler = q.getResultList();
 		return spieler;
 	}
