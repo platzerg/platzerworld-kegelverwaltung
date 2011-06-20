@@ -31,7 +31,7 @@ List<Mannschaft> todos = new ArrayList<Mannschaft>();
 if (user != null){
     url = userService.createLogoutURL(request.getRequestURI());
     urlLinktext = "Logout";
-    todos = dao.getKlassen(user.getUserId());
+    todos = dao.getMannschaften(user.getUserId());
 }
     
 %>
