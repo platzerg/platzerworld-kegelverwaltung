@@ -102,7 +102,7 @@ public class KlassenServlet extends HttpServlet {
 			Klasse klasse = new Klasse("", "", new Date());
 			em.persist(klasse);
 			for (int i = 0; i < 40; i++) {
-				Mannschaft mannschaft = new Mannschaft("", "", new Date());
+				Mannschaft mannschaft = new Mannschaft(new Long(0), "", "", new Date());
 				em.persist(mannschaft);
 				// Now persists the family person relationship
 				//klasse.getMannschaften().add(mannschaft);

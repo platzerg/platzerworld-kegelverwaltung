@@ -44,16 +44,16 @@ public class MannschaftServlet extends HttpServlet {
 				String mannschaft = checkNull(req.getParameter("mannschaft"));
 				MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft);
 			}else if(1 == typ){
-				List<Mannschaft> klassen = MannschaftDAO.INSTANCE.getMannschaften(user.getUserId());
+				List<Mannschaft> mannschaften = MannschaftDAO.INSTANCE.getMannschaften(user.getUserId());
 				
-				List<MannschaftTO> klassenTOs = new ArrayList<MannschaftTO>();
-				for (Mannschaft klasse : klassen) {
-					MannschaftTO klassTO = new MannschaftTO(1, klasse.getId(), klasse.getName());
-					klassenTOs.add(klassTO);
+				List<MannschaftTO> mannschaftenTOs = new ArrayList<MannschaftTO>();
+				for (Mannschaft mannschaft : mannschaften) {
+					MannschaftTO klassTO = new MannschaftTO(mannschaft.getKlasseId(), mannschaft.getId(), mannschaft.getName());
+					mannschaftenTOs.add(klassTO);
 				}
 				
 				Gson gson = new Gson();
-				data = gson.toJson(klassenTOs);
+				data = gson.toJson(mannschaftenTOs);
 				System.out.println("jsonStudents = " + data);
 				
 				 Type type = new TypeToken<List<MannschaftTO>>(){}.getType();

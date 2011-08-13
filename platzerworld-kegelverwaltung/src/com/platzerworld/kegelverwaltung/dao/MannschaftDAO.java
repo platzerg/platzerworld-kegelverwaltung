@@ -24,7 +24,16 @@ public enum MannschaftDAO {
 	public void add(String userId, String name) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Mannschaft mannschaft = new Mannschaft(userId, name, new Date());
+			Mannschaft mannschaft = new Mannschaft(new Long(0), userId, name, new Date());
+			em.persist(mannschaft);
+			em.close();
+		}
+	}
+	
+	public void add(String userId, String name, Long klasseId) {
+		synchronized (this) {
+			EntityManager em = EMFService.get().createEntityManager();
+			Mannschaft mannschaft = new Mannschaft(klasseId, userId, name, new Date());
 			em.persist(mannschaft);
 			em.close();
 		}
