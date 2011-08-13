@@ -17,15 +17,27 @@ public class Mannschaft {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Long klasseId;
 	private String userId;
 	private String name;
 	private Date lastChangedDate;
 	
-	public Mannschaft(String userId, String name, Date lastChangedDate){
+	public Mannschaft(Long klasseId, String userId, String name, Date lastChangedDate){
+		this.klasseId = klasseId;
 		this.userId = userId;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
 	}
+	
+	public Long getKlasseId() {
+		return klasseId;
+	}
+
+
+	public void setKlasseId(Long klasseId) {
+		this.klasseId = klasseId;
+	}
+
 
 	public String getName() {
 		return name;
@@ -54,5 +66,6 @@ public class Mannschaft {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 	
 }
