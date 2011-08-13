@@ -34,12 +34,13 @@ public class ServletCreate extends HttpServlet {
 			resp.sendRedirect("/Klassenverwaltung.jsp");
 		}else if(1 == typ){
 			String mannschaft = checkNull(req.getParameter("mannschaft"));
-			String klasseZurMannschaft = (String) req.getParameter("klasseZurMannschaft");
+			String klasseZurMannschaft = (String) req.getParameter("mannschaftZumSpieler");
 			MannschaftDAO.INSTANCE.add(user.getUserId(), mannschaft, Long.parseLong(klasseZurMannschaft));
 			resp.sendRedirect("/Mannschaftverwaltung.jsp");
 		}else if(2 == typ){
 			String spieler = checkNull(req.getParameter("spieler"));
-			SpielerDAO.INSTANCE.add(user.getUserId(), spieler);
+			String mannschaftZumSpieler = (String) req.getParameter("mannschaftZumSpieler");
+			SpielerDAO.INSTANCE.add(user.getUserId(), spieler, Long.parseLong(mannschaftZumSpieler));
 			resp.sendRedirect("/Spielerverwaltung.jsp");
 		}else{
 			resp.sendRedirect("/Ligaverwaltung.jsp");

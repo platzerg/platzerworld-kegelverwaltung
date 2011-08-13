@@ -13,12 +13,14 @@ public class Spieler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Long mannschaftId;
 	private String userId;
 	private String name;
 	private Date lastChangedDate;
 	
-	public Spieler(String userId, String name, Date lastChangedDate){
+	public Spieler(String userId, Long mannschaftId, String name, Date lastChangedDate){
 		this.userId = userId;
+		this.mannschaftId = mannschaftId;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
 	}
@@ -50,5 +52,15 @@ public class Spieler {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	public Long getMannschaftId() {
+		return mannschaftId;
+	}
+
+	public void setMannschaftId(Long mannschaftId) {
+		this.mannschaftId = mannschaftId;
+	}
+	
+	
 
 }
