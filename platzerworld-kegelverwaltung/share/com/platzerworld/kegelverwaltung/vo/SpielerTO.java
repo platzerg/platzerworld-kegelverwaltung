@@ -36,10 +36,11 @@ public class SpielerTO extends KeyValueTO{
 		
 	}
 	
-	public SpielerTO(long key, String value){
+	public SpielerTO(long key, long mannschaftId, String value){
 		super(key, value);
 		this.id = key;
 		this.name = value;
+		this.mannschaftId = mannschaftId;
 	}
 
 	public SpielerTO(long mannschaftId, long passNr, String name, String vorname, String gebDatum, int latidute, int longitude){
