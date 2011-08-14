@@ -43,7 +43,7 @@ public class SpielerServlet extends HttpServlet {
 				String klasse = checkNull(req.getParameter("spieler"));
 				SpielerDAO.INSTANCE.add(user.getUserId(), klasse, null);
 			}else if(1 == typ){
-				List<Spieler> spielerList = SpielerDAO.INSTANCE.getKlassen(user.getUserId());
+				List<Spieler> spielerList = SpielerDAO.INSTANCE.getSpieler(user.getUserId());
 				
 				List<SpielerTO> klassenTOs = new ArrayList<SpielerTO>();
 				for (Spieler spieler : spielerList) {
@@ -98,11 +98,11 @@ public class SpielerServlet extends HttpServlet {
 				String klasse = checkNull(req.getParameter("spieler"));
 				SpielerDAO.INSTANCE.add(user.getUserId(), klasse, null);
 			}else if(1 == typ){
-				List<Spieler> klassen = SpielerDAO.INSTANCE.getKlassen(user.getUserId());
+				List<Spieler> spielerList = SpielerDAO.INSTANCE.getSpieler(user.getUserId());
 				
 				List<SpielerTO> klassenTOs = new ArrayList<SpielerTO>();
-				for (Spieler klasse : klassen) {
-					SpielerTO klassTO = new SpielerTO(klasse.getId(), klasse.getMannschaftId(), klasse.getName());
+				for (Spieler spieler : spielerList) {
+					SpielerTO klassTO = new SpielerTO(spieler.getId(), spieler.getMannschaftId(), spieler.getName());
 					klassenTOs.add(klassTO);
 				}
 				
