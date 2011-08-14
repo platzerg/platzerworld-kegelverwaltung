@@ -5,6 +5,10 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="com.platzerworld.kegelverwaltung.model.Spieler" %>
 <%@ page import="com.platzerworld.kegelverwaltung.dao.SpielerDAO" %>
+<%@ page import="com.platzerworld.kegelverwaltung.model.Mannschaft" %>
+<%@ page import="com.platzerworld.kegelverwaltung.dao.MannschaftDAO" %>
+<%@ page import="com.platzerworld.kegelverwaltung.model.Klasse" %>
+<%@ page import="com.platzerworld.kegelverwaltung.dao.KlasseDAO" %>
 
 <!DOCTYPE html>
 
@@ -20,18 +24,25 @@
 	<body>
 <%
 SpielerDAO dao = SpielerDAO.INSTANCE;
+MannschaftDAO mannschaftdao = MannschaftDAO.INSTANCE;
+KlasseDAO klassedao = KlasseDAO.INSTANCE;
 
 UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
 
 String url = userService.createLoginURL(request.getRequestURI());
 String urlLinktext = "Login";
-List<Spieler> todos = new ArrayList<Spieler>();
+
+List<Spieler> spielerListe = new ArrayList<Spieler>();
+List<Mannschaft> mannschaftenListe = new ArrayList<Mannschaft>();
+List<Klasse> klassenListe = new ArrayList<Klasse>();
             
 if (user != null){
     url = userService.createLogoutURL(request.getRequestURI());
     urlLinktext = "Logout";
-    todos = dao.getKlassen(user.getUserId());
+    spielerListe = dao.getKlassen(user.getUserId());
+    klassenListe = klassedao.getKlassen(user.getUserId());
+    mannschaftenListe = mannschaftdao.getMannschaften(user.getUserId());
 }
 
     
@@ -59,7 +70,7 @@ if (user != null){
 	</div>
 
 <div style="clear: both;"/>	
-You have a total number of <%= todos.size() %>  Todos.
+You have a total number of <%= spielerListe.size() %>  spielerListe.
 
 <table>
   <tr>
@@ -67,7 +78,7 @@ You have a total number of <%= todos.size() %>  Todos.
       <th>Done</th>
     </tr>
 
-<% for (Spieler todo : todos) {%>
+<% for (Spieler todo : spielerListe) {%>
 <tr> 
 <td>
 <%=todo.getName()%>
@@ -96,6 +107,19 @@ You have a total number of <%= todos.size() %>  Todos.
 		<tr>
 			<td><label for="summary">Summary</label></td>
 			<td><input type="text" name="spieler" id="spieler" size="65"/></td>
+		</tr>
+		
+		<tr>
+
+		<select name="mannschaftZumSpieler">
+		
+		<% for (Mannschaft mannschaft : mannschaftenListe) {%>
+			<option value="<%out.print(mannschaft.getId());%>">  
+			<%out.println(mannschaft.getName()); %>
+			</option>  
+		<%}%>
+		</select>  
+		
 		</tr>
 		
 		<tr>

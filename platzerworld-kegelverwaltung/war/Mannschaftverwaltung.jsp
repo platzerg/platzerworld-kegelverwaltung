@@ -5,6 +5,8 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="com.platzerworld.kegelverwaltung.model.Mannschaft" %>
 <%@ page import="com.platzerworld.kegelverwaltung.dao.MannschaftDAO" %>
+<%@ page import="com.platzerworld.kegelverwaltung.model.Klasse" %>
+<%@ page import="com.platzerworld.kegelverwaltung.dao.KlasseDAO" %>
 
 <!DOCTYPE html>
 
@@ -20,6 +22,7 @@
 	<body>
 <%
 MannschaftDAO dao = MannschaftDAO.INSTANCE;
+KlasseDAO klassedao = KlasseDAO.INSTANCE;
 
 UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
@@ -27,11 +30,13 @@ User user = userService.getCurrentUser();
 String url = userService.createLoginURL(request.getRequestURI());
 String urlLinktext = "Login";
 List<Mannschaft> todos = new ArrayList<Mannschaft>();
+List<Klasse> klassenListe = new ArrayList<Klasse>();
             
 if (user != null){
     url = userService.createLogoutURL(request.getRequestURI());
     urlLinktext = "Logout";
     todos = dao.getMannschaften(user.getUserId());
+    klassenListe = klassedao.getKlassen(user.getUserId());
 }
     
 %>
@@ -62,14 +67,17 @@ You have a total number of <%= todos.size() %>  Todos.
 
 <table>
   <tr>
-      <th>Klasse</th>
-      <th>Done</th>
+      <th>Mannschaft</th>
+      <th>Klasse-ID</th>
     </tr>
 
 <% for (Mannschaft todo : todos) {%>
 <tr> 
 <td>
 <%=todo.getName()%>
+</td>
+<td>
+<%=todo.getKlasseId()%>
 </td>
 
 <td>
@@ -85,7 +93,7 @@ You have a total number of <%= todos.size() %>  Todos.
 
 <div class="main">
 
-<div class="headline">New Mannschaft</div>
+<div class="headline">neue Mannschaft</div>
 
 <% if (user != null){ %> 
 
@@ -95,6 +103,18 @@ You have a total number of <%= todos.size() %>  Todos.
 		<tr>
 			<td><label for="summary">Summary</label></td>
 			<td><input type="text" name="mannschaft" id="mannschaft" size="65"/></td>
+		</tr>
+		<tr>
+
+		<select name="klasseZurMannschaft">
+		
+		<% for (Klasse klasse : klassenListe) {%>
+			<option value="<%out.print(klasse.getId());%>">  
+			<%out.println(klasse.getName()); %>
+			</option>  
+		<%}%>
+		</select>  
+		
 		</tr>
 		
 	<tr>
