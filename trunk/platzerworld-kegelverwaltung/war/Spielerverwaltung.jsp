@@ -40,7 +40,7 @@ List<Klasse> klassenListe = new ArrayList<Klasse>();
 if (user != null){
     url = userService.createLogoutURL(request.getRequestURI());
     urlLinktext = "Logout";
-    spielerListe = dao.getKlassen(user.getUserId());
+    spielerListe = dao.getSpieler(user.getUserId());
     klassenListe = klassedao.getKlassen(user.getUserId());
     mannschaftenListe = mannschaftdao.getMannschaften(user.getUserId());
 }
