@@ -20,6 +20,10 @@ public class VereinTO extends KeyValueTO{
 	
 	/** longitude */
 	public int longitude;
+	
+	public int clubnummer;
+	
+	public String club;
 
 	
 	public VereinTO(){
