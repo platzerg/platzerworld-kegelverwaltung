@@ -40,6 +40,14 @@ public class VereinTO extends KeyValueTO{
 		this.longitude = longitude;
 	}
 	
+	public VereinTO(long key, String value, int latidute, int longitude, int clubnummer, String club){
+		super(key, value);
+		this.latidute = latidute;
+		this.longitude = longitude;
+		this.clubnummer = clubnummer;
+		this.club = club;
+	}
+	
   /**
    * Zeigt an, ob der GeoKontakt bereits gespeichert wurde.
    * 
