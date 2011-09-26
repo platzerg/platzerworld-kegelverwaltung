@@ -11,6 +11,8 @@ public class KlasseTO  extends KeyValueTO{
 	
 	/** id der DB Tabelle in der Kegelverwaltung-Datenbank. */
 	public long id;
+	
+	public long klasseId;
   
   /** Bezeichnung der Klasse. */
 	public String name;
@@ -23,9 +25,10 @@ public class KlasseTO  extends KeyValueTO{
 		this.name = value;
 	}
 	
-	public KlasseTO(long key, String value){
+	public KlasseTO(long key, long klasseId, String value){
 		super(key, value);
 		this.id = key;
+		this.klasseId = klasseId;
 		this.name = value;
 	}
 	

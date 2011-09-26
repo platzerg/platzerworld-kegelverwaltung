@@ -63,12 +63,17 @@ You have a total number of <%= todos.size() %>  Todos.
 
 <table>
   <tr>
+  	  <th>Klasse-ID</th>
       <th>Klasse</th>
       <th>Done</th>
     </tr>
 
 <% for (Klasse todo : todos) {%>
 <tr> 
+<td>
+<%=todo.getKlasseId()%>
+</td>
+
 <td>
 <%=todo.getName()%>
 </td>
@@ -94,7 +99,12 @@ You have a total number of <%= todos.size() %>  Todos.
 <INPUT TYPE="hidden" NAME="typ" VALUE="0">
 	<table>
 		<tr>
-			<td><label for="summary">Summary</label></td>
+			<td><label for="klasseid">Klasse-ID</label></td>
+			<td><input type="text" name="klasseid" id="klasseid" size="65"/></td>
+		</tr>
+		
+		<tr>
+			<td><label for="klasse">Klasse</label></td>
 			<td><input type="text" name="klasse" id="klasse" size="65"/></td>
 		</tr>
 		

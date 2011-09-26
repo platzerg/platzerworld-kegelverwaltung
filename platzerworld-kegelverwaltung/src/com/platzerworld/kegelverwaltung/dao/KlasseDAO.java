@@ -21,10 +21,10 @@ public enum KlasseDAO {
 		return klassen;
 	}
 
-	public void add(String userId, String name) {
+	public void add(String userId, long klasseId, String name) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Klasse klasse = new Klasse(userId, name, new Date());
+			Klasse klasse = new Klasse(userId, klasseId, name, new Date());
 			em.persist(klasse);
 			em.close();
 		}
