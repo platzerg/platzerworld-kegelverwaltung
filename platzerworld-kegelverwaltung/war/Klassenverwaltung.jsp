@@ -81,6 +81,11 @@ You have a total number of <%= todos.size() %>  Todos.
 <td>
 <a class="done" href="/done?typ=0&id=<%=todo.getId()%>" >Done</a>
 </td>
+
+<td>
+<a class="done" href="/edit?typ=0&klasse=<%=todo.getName()%>&klasseid=<%=todo.getKlasseId()%>&id=<%=todo.getId()%>" >Edit</a>
+</td>
+
 </tr> 
 <%}
 %>
@@ -100,7 +105,7 @@ You have a total number of <%= todos.size() %>  Todos.
 	<table>
 		<tr>
 			<td><label for="klasseid">Klasse-ID</label></td>
-			<td><input type="text" name="klasseid" id="klasseid" size="65"/></td>
+			<td><input type="text" name="klasseid" id="klasseid" value='<%=user.getNickname()%>' size="65"/></td>
 		</tr>
 		
 		<tr>
