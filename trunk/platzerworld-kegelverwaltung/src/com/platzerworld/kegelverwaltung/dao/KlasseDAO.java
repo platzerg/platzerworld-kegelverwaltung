@@ -48,4 +48,16 @@ public enum KlasseDAO {
 			em.close();
 		}
 	}
+	
+	public void update(long id, long klasseId, String userId, String name) {
+		EntityManager em = EMFService.get().createEntityManager();
+		try {
+			Klasse klasse = em.find(Klasse.class, id);
+			klasse.setKlasseId(new Long(klasseId));
+			klasse.setName(name);
+			//em.remove(klasse);
+		} finally {
+			em.close();
+		}
+	}
 }

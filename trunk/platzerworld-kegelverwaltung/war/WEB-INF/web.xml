@@ -6,6 +6,10 @@
   <servlet-class>com.platzerworld.kegelverwaltung.servlet.ServletCreate</servlet-class>
  </servlet>
  <servlet>
+  <servlet-name>Edit</servlet-name>
+  <servlet-class>com.platzerworld.kegelverwaltung.servlet.ServletEdit</servlet-class>
+ </servlet>
+ <servlet>
   <servlet-name>Remove</servlet-name>
   <servlet-class>com.platzerworld.kegelverwaltung.servlet.ServletRemove</servlet-class>
  </servlet>
@@ -32,6 +36,10 @@
  <servlet-mapping>
   <servlet-name>Remove</servlet-name>
   <url-pattern>/done</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Edit</servlet-name>
+  <url-pattern>/edit</url-pattern>
  </servlet-mapping>
  <servlet-mapping>
   <servlet-name>CreateNew</servlet-name>
