@@ -31,7 +31,7 @@ public class ServletCreate extends HttpServlet {
 		if(0== typ){
 			String klasse = checkNull(req.getParameter("klasse"));
 			String klasseId = checkNull(req.getParameter("klasseid"));
-			KlasseDAO.INSTANCE.add(user.getUserId(), Long.parseLong(klasseId), klasse);
+			KlasseDAO.INSTANCE.add(user.getUserId(), klasseId, klasse, "");
 			resp.sendRedirect("/Klassenverwaltung.jsp");
 		}else if(1 == typ){
 			String mannschaft = checkNull(req.getParameter("mannschaft"));

@@ -47,13 +47,13 @@ public class KlassenServlet extends HttpServlet {
 			if(0== typ){
 				String klasse = checkNull(req.getParameter("klasse"));
 				String klasseId = checkNull(req.getParameter("klasseid"));
-				KlasseDAO.INSTANCE.add(user.getUserId(), Long.parseLong(klasseId), klasse);
+				KlasseDAO.INSTANCE.add(user.getUserId(), klasseId, klasse, "");
 			}else if(1 == typ){
 				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(user.getUserId());
 				
 				List<KlasseTO> klassenTOs = new ArrayList<KlasseTO>();
 				for (Klasse klasse : klassen) {
-					KlasseTO klassTO = new KlasseTO(klasse.getId(),klasse.getKlasseId() , klasse.getName());
+					KlasseTO klassTO = new KlasseTO(klasse.getId(),klasse.getKlasseId() , klasse.getName(), klasse.getSchub());
 					klassenTOs.add(klassTO);
 				}
 				
@@ -100,7 +100,7 @@ public class KlassenServlet extends HttpServlet {
 
 		// No, so lets create new entries
 		if (createNewEntries) {
-			Klasse klasse = new Klasse("", 0, "", new Date());
+			Klasse klasse = new Klasse("", "0", "", new Date(), "");
 			em.persist(klasse);
 			for (int i = 0; i < 40; i++) {
 				Mannschaft mannschaft = new Mannschaft(new Long(0), "", "", new Date());
@@ -141,13 +141,13 @@ public class KlassenServlet extends HttpServlet {
 			if(0== typ){
 				String klasse = checkNull(req.getParameter("klasse"));
 				String klasseId = checkNull(req.getParameter("klasseid"));
-				KlasseDAO.INSTANCE.add(user.getUserId(), Long.parseLong(klasseId), klasse);
+				KlasseDAO.INSTANCE.add(user.getUserId(), klasseId, klasse, "");
 			}else if(1 == typ){
 				List<Klasse> klassen = KlasseDAO.INSTANCE.getKlassen(user.getUserId());
 				
 				List<KlasseTO> klassenTOs = new ArrayList<KlasseTO>();
 				for (Klasse klasse : klassen) {
-					KlasseTO klassTO = new KlasseTO(klasse.getId(), klasse.getKlasseId(), klasse.getName());
+					KlasseTO klassTO = new KlasseTO(klasse.getId(), klasse.getKlasseId(), klasse.getName(), klasse.getSchub());
 					klassenTOs.add(klassTO);
 				}
 				

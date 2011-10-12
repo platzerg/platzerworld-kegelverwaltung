@@ -16,17 +16,19 @@ public class Klasse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long klasseId;
+	private String klasseId;
 	private String userId;
 	private String name;
+	private String schub;
 	private Date lastChangedDate;
 	
 	
-	public Klasse(String userId, long klasseId, String name, Date lastChangedDate){
+	public Klasse(String userId, String klasseId, String name, Date lastChangedDate, String schub){
 		this.userId = userId;
 		this.klasseId = klasseId;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
+		this.schub = schub;
 	}
 
 	public String getName() {
@@ -58,13 +60,20 @@ public class Klasse {
 		this.userId = userId;
 	}
 
-	public Long getKlasseId() {
-		if(null == klasseId) return new Long(0);
+	public String getKlasseId() {
+		if(null == klasseId) return "";
 		return klasseId;
 	}
 
-	public void setKlasseId(Long klasseId) {
+	public void setKlasseId(String klasseId) {
 		this.klasseId = klasseId;
 	}
-	
+
+	public String getSchub() {
+		return schub;
+	}
+
+	public void setSchub(String schub) {
+		this.schub = schub;
+	}
 }

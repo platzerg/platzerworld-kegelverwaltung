@@ -32,7 +32,7 @@ public class ServletEdit extends HttpServlet {
 		if(0== typ){
 			String name = checkNull(req.getParameter("klasse"));
 			String klasseId = checkNull(req.getParameter("klasseid"));
-			KlasseDAO.INSTANCE.update(id, Long.parseLong(klasseId), user.getUserId(), name);
+			KlasseDAO.INSTANCE.update(id, klasseId, user.getUserId(), name, "");
 			resp.sendRedirect("/Klassenverwaltung.jsp");
 		}else if(1 == typ){
 			MannschaftDAO.INSTANCE.remove(id);
