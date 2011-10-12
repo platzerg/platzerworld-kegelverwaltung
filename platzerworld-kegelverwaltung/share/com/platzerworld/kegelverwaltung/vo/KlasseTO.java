@@ -9,10 +9,11 @@ package com.platzerworld.kegelverwaltung.vo;
  */
 public class KlasseTO  extends KeyValueTO{
 	
-	/** id der DB Tabelle in der Kegelverwaltung-Datenbank. */
-	public long id;
+	private static final long serialVersionUID = -268797146622943521L;
+
+	public String klasseId;
 	
-	public long klasseId;
+	public String schub;
   
   /** Bezeichnung der Klasse. */
 	public String name;
@@ -25,11 +26,11 @@ public class KlasseTO  extends KeyValueTO{
 		this.name = value;
 	}
 	
-	public KlasseTO(long key, long klasseId, String value){
+	public KlasseTO(long key, String klasseId, String value, String schub){
 		super(key, value);
-		this.id = key;
 		this.klasseId = klasseId;
 		this.name = value;
+		this.schub = schub;
 	}
 	
   /**
@@ -38,6 +39,6 @@ public class KlasseTO  extends KeyValueTO{
    * @return true, wenn die Klasse in Datenbank vorhanden ist.
    */
   public boolean istNeu() {
-    return id == 0;
+    return key == 0;
   }
 }

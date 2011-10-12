@@ -21,10 +21,10 @@ public enum KlasseDAO {
 		return klassen;
 	}
 
-	public void add(String userId, long klasseId, String name) {
+	public void add(String userId, String klasseId, String name, String schub) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Klasse klasse = new Klasse(userId, klasseId, name, new Date());
+			Klasse klasse = new Klasse(userId, klasseId, name, new Date(), schub);
 			em.persist(klasse);
 			em.close();
 		}
@@ -49,12 +49,13 @@ public enum KlasseDAO {
 		}
 	}
 	
-	public void update(long id, long klasseId, String userId, String name) {
+	public void update(long id, String klasseId, String userId, String name, String schub) {
 		EntityManager em = EMFService.get().createEntityManager();
 		try {
 			Klasse klasse = em.find(Klasse.class, id);
-			klasse.setKlasseId(new Long(klasseId));
+			klasse.setKlasseId(klasseId);
 			klasse.setName(name);
+			klasse.setSchub(schub);
 			//em.remove(klasse);
 		} finally {
 			em.close();
