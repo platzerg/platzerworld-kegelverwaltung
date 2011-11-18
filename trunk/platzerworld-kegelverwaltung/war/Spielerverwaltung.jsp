@@ -123,6 +123,11 @@ You have a total number of <%= spielerListe.size() %>  spielerListe.
 		</tr>
 		
 		<tr>
+			<td><label for="passnr">PassNr</label></td>
+			<td><input type="text" name="passnr" id="passnr" size="65"/></td>
+		</tr>
+		
+		<tr>
 			<td colspan="2" align="right"><input type="submit" value="Create"/></td>
 		</tr>
 	</table>

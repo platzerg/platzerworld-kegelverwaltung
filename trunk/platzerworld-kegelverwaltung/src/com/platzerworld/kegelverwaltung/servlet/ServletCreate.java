@@ -41,7 +41,8 @@ public class ServletCreate extends HttpServlet {
 		}else if(2 == typ){
 			String spieler = checkNull(req.getParameter("spieler"));
 			String mannschaftZumSpieler = (String) req.getParameter("mannschaftZumSpieler");
-			SpielerDAO.INSTANCE.add(user.getUserId(), spieler, Long.parseLong(mannschaftZumSpieler));
+			String passnr = checkNull(req.getParameter("passnr"));
+			SpielerDAO.INSTANCE.add(user.getUserId(), spieler, Long.parseLong(mannschaftZumSpieler), passnr);
 			resp.sendRedirect("/Spielerverwaltung.jsp");
 		}else{
 			resp.sendRedirect("/Ligaverwaltung.jsp");
