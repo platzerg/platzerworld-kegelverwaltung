@@ -105,7 +105,11 @@ You have a total number of <%= spielerListe.size() %>  spielerListe.
 <INPUT TYPE="hidden" NAME="typ" VALUE="2">
 	<table>
 		<tr>
-			<td><label for="summary">Summary</label></td>
+			<td><label for="passnr">PassNr</label></td>
+			<td><input type="text" name="passnr" id="passnr" size="65"/></td>
+		</tr>
+		<tr>
+			<td><label for="spieler">Spieler</label></td>
 			<td><input type="text" name="spieler" id="spieler" size="65"/></td>
 		</tr>
 		
@@ -122,10 +126,7 @@ You have a total number of <%= spielerListe.size() %>  spielerListe.
 		
 		</tr>
 		
-		<tr>
-			<td><label for="passnr">PassNr</label></td>
-			<td><input type="text" name="passnr" id="passnr" size="65"/></td>
-		</tr>
+		
 		
 		<tr>
 			<td colspan="2" align="right"><input type="submit" value="Create"/></td>
