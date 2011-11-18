@@ -15,12 +15,14 @@ public class Spieler {
 	private Long id;
 	private Long mannschaftId;
 	private String userId;
+	private String passNr;
 	private String name;
 	private Date lastChangedDate;
 	
-	public Spieler(String userId, Long mannschaftId, String name, Date lastChangedDate){
+	public Spieler(String userId, Long mannschaftId, String passNr, String name, Date lastChangedDate){
 		this.userId = userId;
 		this.mannschaftId = mannschaftId;
+		this.passNr = passNr;
 		this.name = name;
 		this.lastChangedDate = lastChangedDate;
 	}
@@ -60,7 +62,12 @@ public class Spieler {
 	public void setMannschaftId(Long mannschaftId) {
 		this.mannschaftId = mannschaftId;
 	}
-	
-	
 
+	public String getPassNr() {
+		return passNr;
+	}
+
+	public void setPassNr(String passNr) {
+		this.passNr = passNr;
+	}
 }
