@@ -48,7 +48,7 @@ public class SpielerServlet extends HttpServlet {
 				
 				List<SpielerTO> klassenTOs = new ArrayList<SpielerTO>();
 				for (Spieler spieler : spielerList) {
-					SpielerTO klassTO = new SpielerTO(spieler.getId(), spieler.getMannschaftId(), spieler.getName());
+					SpielerTO klassTO = new SpielerTO(spieler.getId(), spieler.getMannschaftId(), spieler.getPassNr(), spieler.getName());
 					klassenTOs.add(klassTO);
 				}
 				
@@ -104,7 +104,7 @@ public class SpielerServlet extends HttpServlet {
 				
 				List<SpielerTO> klassenTOs = new ArrayList<SpielerTO>();
 				for (Spieler spieler : spielerList) {
-					SpielerTO klassTO = new SpielerTO(spieler.getId(), spieler.getMannschaftId(), spieler.getName());
+					SpielerTO klassTO = new SpielerTO(spieler.getId(), spieler.getMannschaftId(), spieler.getPassNr(), spieler.getName());
 					klassenTOs.add(klassTO);
 				}
 				
