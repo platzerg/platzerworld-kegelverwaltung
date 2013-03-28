@@ -1,4 +1,4 @@
-package com.platzerworld.biergarten;
+package com.platzerworld.biergarten.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,8 +11,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.platzerworld.biergarten.R;
+import com.platzerworld.biergarten.R.drawable;
+import com.platzerworld.biergarten.R.id;
+import com.platzerworld.biergarten.R.layout;
+import com.platzerworld.biergarten.R.menu;
 
-public class BiergartenActivity extends Activity {
+public class BiergartenActivity extends BaseActivity {
 	static final LatLng HAMBURG = new LatLng(53.558, 9.927);
 	static final LatLng KIEL = new LatLng(53.551, 9.993);
 	private GoogleMap map;
@@ -21,7 +26,7 @@ public class BiergartenActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.biergarten);
 		
-		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+		map = ((MapFragment) super.getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG)
 				.title("Hamburg"));
